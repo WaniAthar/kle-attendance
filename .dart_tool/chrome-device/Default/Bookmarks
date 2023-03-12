@@ -1,0 +1,69 @@
+{
+   "checksum": "c7960fc46dbb22e59df5384a6b4a3320",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13223960760602979",
+               "date_last_used": "0",
+               "guid": "cbc2fbd1-fefd-42af-b1ba-ba07d9a0231b",
+               "id": "6",
+               "name": "ASUS Homepage",
+               "show_icon": false,
+               "source": "import_fre",
+               "type": "url",
+               "url": "http://www.asus.com/"
+            }, {
+               "date_added": "13223960760618600",
+               "date_last_used": "0",
+               "guid": "166a5bf3-6d0b-47d3-8639-9866752c1ffb",
+               "id": "7",
+               "name": "ASUS Member",
+               "show_icon": false,
+               "source": "import_fre",
+               "type": "url",
+               "url": "https://account.asus.com/"
+            } ],
+            "date_added": "13322984263646787",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "ca176340-59aa-468a-b63a-0847f3703228",
+            "id": "5",
+            "name": "ASUS E-Service",
+            "source": "import_fre",
+            "type": "folder"
+         } ],
+         "date_added": "13322984259289683",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favorites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13322984259289688",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13322984259289690",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favorites",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
