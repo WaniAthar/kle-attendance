@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Projects\\Applications\\attendance\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-et\\values-et.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\athar\\.gradle\\caches\\transforms-3\\6ec2c823b2ddfa9d4aff16fd99b56b89\\transformed\\jetified-exoplayer-core-2.18.1\\res\\values-et\\values-et.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,129,196,263,337,419,490,580,672",
+                        "endColumns": "73,66,66,73,81,70,89,91,76",
+                        "endOffsets": "124,191,258,332,414,485,575,667,744"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\athar\\.gradle\\caches\\transforms-3\\5e083c06c9925c2309f02468fc66e376\\transformed\\core-1.7.0\\res\\values-et\\values-et.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "11",
+                        "startColumns": "4",
+                        "startOffsets": "749",
+                        "endColumns": "100",
+                        "endOffsets": "845"
+                    }
+                }
+            ]
+        }
+    ]
+}
