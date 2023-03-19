@@ -337,7 +337,9 @@ class _SLiderState extends State<SLider> {
                         highlightColor: Colors.grey[100]!);
                   } else {
                     return Text(
-                      '${api.personalData['semester']}', //semester
+                      api.attendanceData == null
+                          ? ""
+                          : '${api.personalData['semester']}', //semester
                       style: GoogleFonts.poppins(
                           fontSize: 30, fontWeight: FontWeight.bold),
                     );
@@ -347,9 +349,7 @@ class _SLiderState extends State<SLider> {
 
               Flexible(
                 child: FutureBuilder<void>(
-                  future: api.isDataFetched == false
-                      ? api.getData()
-                      : Future(() => null),
+                  future: api.getData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       // show shimmer effect while waiting for data
@@ -387,6 +387,35 @@ class _SLiderState extends State<SLider> {
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red),
                                 textAlign: TextAlign.center),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
+                            Text(
+                                "If the problem persists, please check your USN and DOB and try again",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red),
+                                textAlign: TextAlign.center),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Click the ",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red),
+                                    textAlign: TextAlign.center),
+                                const Icon(
+                                  Icons.person,
+                                  color: Colors.red,
+                                ),
+                                Text(" icon to change your USN and/or DOB",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red),
+                                    textAlign: TextAlign.center),
+                              ],
+                            ),
                           ],
                         ),
                       );

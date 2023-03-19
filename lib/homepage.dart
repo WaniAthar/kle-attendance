@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
           future: api.getData(),
           builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // Show shimmer effect while data is loading
               return _buildShimmerEffect();
             } else if (snapshot.hasError) {
               return Column(
@@ -37,9 +36,7 @@ class HomePage extends StatelessWidget {
                       )),
                 ],
               );
-            }
-            else {
-              api.isDataFetched = true;
+            } else {
               return _buildData(api);
             }
           },
@@ -94,10 +91,7 @@ class HomePage extends StatelessWidget {
           child: Lottie.asset(
               "assets/lottieanimations/139432-person-riding-bicycle.json"),
         ),
-        Text(
-            api.personalData != null && api.personalData.isNotEmpty
-                ? '${api.personalData['name']}'
-                : 'Personal data is null or empty',
+        Text('${api.personalData['name']}',
             style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 25,
@@ -110,9 +104,7 @@ class HomePage extends StatelessWidget {
           endIndent: 100,
         ),
         Text(
-          api.personalData != null && api.personalData.isNotEmpty
-              ? '${api.personalData['usn']}'
-              : 'Personal data is null or empty',
+          '${api.personalData['usn']}',
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: 15,
