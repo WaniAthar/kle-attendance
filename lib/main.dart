@@ -220,7 +220,7 @@ class _SLiderState extends State<SLider> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Attendance",
+          "Attendd",
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontSize: 25,
@@ -270,7 +270,6 @@ class _SLiderState extends State<SLider> {
             splashColor: Colors.white30,
             tooltip: "Edit USN",
             onPressed: () {
-              const HomePage();
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const InputData()));
             },
@@ -284,6 +283,7 @@ class _SLiderState extends State<SLider> {
         ],
       ),
       body: SlidingUpPanel(
+        backdropTapClosesPanel: true,
         body: const HomePage(),
         minHeight: 480,
         maxHeight: 750,
@@ -318,6 +318,7 @@ class _SLiderState extends State<SLider> {
               ),
               // shimmer effect for the 'semester' text
               FutureBuilder(
+                // future: api.getPersonalData(),
                 future: api.getData(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -349,6 +350,7 @@ class _SLiderState extends State<SLider> {
 
               Flexible(
                 child: FutureBuilder<void>(
+                  // future: api.getAttendanceData(),
                   future: api.getData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {

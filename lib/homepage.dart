@@ -15,11 +15,16 @@ class HomePage extends StatelessWidget {
       body: Container(
         color: Colors.orange,
         child: FutureBuilder(
+          // dont call the api.getData() here, it will call the api everytime the build method is called
+          // instead call it in the init state of the provider
+          // future: api.getPersonalData(),
           future: api.getData(),
           builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
+              
               return _buildShimmerEffect();
             } else if (snapshot.hasError) {
+              api.fetchErr = true;
               return Column(
                 children: [
                   SizedBox(
@@ -44,6 +49,8 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  // ignore: non_constant_identifier_names
 
   Widget _buildShimmerEffect() {
     return Shimmer.fromColors(

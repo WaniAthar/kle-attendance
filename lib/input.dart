@@ -325,9 +325,9 @@ class LoadLottie extends StatelessWidget {
 class TOS extends StatelessWidget {
   TOS({super.key});
   String terms = """
-Terms of Service for Attend App:
+Terms of Service for Attendd App:
 
-Welcome to Attend App! These Terms of Service ("Terms") govern your use of the Attend App ("the App"). The App is open source, which means that you can access and use the source code of the App for non-commercial purposes. However, the API used by the App is not open source and is proprietary.
+Welcome to Attendd App! These Terms of Service ("Terms") govern your use of the Attend App ("the App"). The App is open source, which means that you can access and use the source code of the App for non-commercial purposes. However, the API used by the App is not open source and is proprietary.
 
 By using the App, you agree to these Terms. If you do not agree to these Terms, you should not use the App.
 
@@ -364,7 +364,7 @@ We reserve the right to update or modify these Terms at any time without prior n
 Governing Law and Jurisdiction
 These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the developers of the App reside. Any legal action arising out of or relating to these Terms shall be brought exclusively in the courts of that jurisdiction.
 
-Thank you for using Attend App!
+Thank you for using Attendd App!
 
 """;
   @override
@@ -397,9 +397,9 @@ Thank you for using Attend App!
 class PrivacyPolicy extends StatelessWidget {
   PrivacyPolicy({super.key});
   String policy = """
-Privacy Policy for Attend App:
+Privacy Policy for Attendd App:
 
-Thank you for using Attend App ("the App"). This privacy policy explains how we collect, use, and protect your personal information when you use our App. By using our App, you agree to the terms and conditions of this policy.
+Thank you for using Attendd App ("the App"). This privacy policy explains how we collect, use, and protect your personal information when you use our App. By using our App, you agree to the terms and conditions of this policy.
 
 Information We Collect:
 We only collect two pieces of information from the user- USN and date of birth, which is used to fetch the attendance data from the server. We do not collect any other personal information from the users.
@@ -419,7 +419,7 @@ If you have any questions or concerns about our privacy policy or our App, pleas
 Changes to this Policy:
 We reserve the right to update or modify this privacy policy at any time. We will post any changes on this page, and we encourage you to review this policy periodically.
 
-Thank you for using Attend App!
+Thank you for using Attendd App!
 """;
   @override
   Widget build(BuildContext context) {
