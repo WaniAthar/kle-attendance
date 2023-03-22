@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
           future: api.getData(),
           builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              
               return _buildShimmerEffect();
             } else if (snapshot.hasError) {
               api.fetchErr = true;
@@ -90,6 +89,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildData(API api) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Container(
           alignment: Alignment.center,

@@ -206,7 +206,6 @@ class TileContainer extends StatelessWidget {
 
 class SLider extends StatefulWidget {
   const SLider({super.key});
-
   @override
   State<SLider> createState() => _SLiderState();
 }
@@ -215,6 +214,8 @@ class _SLiderState extends State<SLider> {
   @override
   Widget build(BuildContext context) {
     final api = Provider.of<API>(context);
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -285,8 +286,8 @@ class _SLiderState extends State<SLider> {
       body: SlidingUpPanel(
         backdropTapClosesPanel: true,
         body: const HomePage(),
-        minHeight: 480,
-        maxHeight: 750,
+        minHeight: deviceHeight * 0.55,
+        maxHeight: deviceHeight * 0.9,
         backdropEnabled: true,
         backdropOpacity: 1,
         backdropColor: Colors.orange,
@@ -308,11 +309,11 @@ class _SLiderState extends State<SLider> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: const EdgeInsets.all(10),
-                height: 6,
+                margin: const EdgeInsets.only(top: 10),
+                height: 10,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.black45,
+                  color: const Color.fromARGB(115, 45, 44, 44),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),

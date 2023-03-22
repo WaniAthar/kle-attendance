@@ -31,6 +31,8 @@ class _InputDataState extends State<InputData> {
   @override
   Widget build(BuildContext context) {
     final api = Provider.of<API>(context, listen: false);
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(
@@ -90,7 +92,7 @@ class _InputDataState extends State<InputData> {
                 child: const LoadLottie(),
               ),
               SizedBox(
-                width: 310,
+                width: deviceWidth * 0.8,
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -126,7 +128,7 @@ class _InputDataState extends State<InputData> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 100,
+                      width: deviceWidth * 0.27,
                       child: TextField(
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -156,8 +158,9 @@ class _InputDataState extends State<InputData> {
                         },
                       ),
                     ),
+                    SizedBox(width: deviceWidth * 0.01),
                     SizedBox(
-                      width: 100,
+                      width: deviceWidth * 0.23,
                       child: TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -185,8 +188,9 @@ class _InputDataState extends State<InputData> {
                         },
                       ),
                     ),
+                    SizedBox(width: deviceWidth * 0.01),
                     SizedBox(
-                      width: 100,
+                      width: deviceWidth * 0.27,
                       child: TextField(
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -252,8 +256,8 @@ class _InputDataState extends State<InputData> {
                       ),
                     ),
                     child: SizedBox(
-                      height: 50,
-                      width: 275,
+                      height: deviceHeight * 0.06,
+                      width: deviceWidth * 0.7,
                       child: Center(
                         child: Text(
                           "Submit",

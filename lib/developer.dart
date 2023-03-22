@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutDev extends StatelessWidget {
   const AboutDev({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -33,8 +36,7 @@ class AboutDev extends StatelessWidget {
             // image
             Container(
               margin: const EdgeInsets.only(top: 20),
-              height: 300,
-              width: 300,
+              width: size.width * 0.65,
               child: const Image(
                 image: AssetImage("assets/images/athar.png"),
               ),
@@ -90,20 +92,49 @@ class AboutDev extends StatelessWidget {
             //   image: AssetImage("assets/images/sign.png"),
             //   height: 150,
             // ),
-            Container(
-              height: 50,
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.only(left: 50, right: 50),
-              child: Text(
-                "atharwani001@gmail.com",
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            )
+            Text("Found a bug?",
+                style: GoogleFonts.poppins(color: Colors.white)),
+            SizedBox(
+              child: IconButton(
+                  onPressed: () async {
+                    if (await launchUrl(Uri.parse(
+                        "mailto:atharwani001@gmail.com?subject=Bug Report&body=Hi Athar, I found a bug in your app."))) {
+                      // snackbar
+                      true;
+                    } else {
+                      // snackbar
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Couldn't launch mail app"),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  },
+                  tooltip: "Let's kill the bug",
+                  icon: const Icon(
+                    Icons.bug_report_outlined,
+                    color: Colors.white,
+                    size: 30,
+                    grade: 1,
+                  )),
+            ),
+
+            // Container(
+            //   height: size.height * 0.05,
+            //   padding: const EdgeInsets.all(10),
+            //   margin: const EdgeInsets.only(left: 50, right: 50),
+            //   child: Text(
+            //     "atharwani001@gmail.com",
+            //     style: GoogleFonts.poppins(
+            //       color: Colors.white,
+            //       fontSize: 18,
+            //       fontWeight: FontWeight.w600,
+            //       fontStyle: FontStyle.italic,
+            //     ),
+            //   ),
+            //)
           ],
         ),
       ),
