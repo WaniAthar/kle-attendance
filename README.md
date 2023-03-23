@@ -1,5 +1,5 @@
 # kle-attendance
-KLE attendance or just Attendance is an android app in development stage which will show the attendance percentage of each course on mobile phone
+KLE Attendance or Attendd is cross-platform mobile app which will let the student of KLE Technological University to access his attendence of each course
 
 ## Contribute to the project
 **Clone this repository** `git clone https://github.com/WaniAthar/kle-attendance.git`
