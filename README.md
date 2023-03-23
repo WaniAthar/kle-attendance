@@ -1,16 +1,32 @@
 # kle-attendance
-KLE Attendance or Attendd is cross-platform mobile app which will let the student of KLE Technological University to access his attendence of each course
+KLE Attendance or Attendd is cross-platform mobile app which will lets the student of KLE Technological University to access his attendence of each course
 
-## Contribute to the project
-**Clone this repository** `git clone https://github.com/WaniAthar/kle-attendance.git`
+## Contribution Guidelines
 
-**In the terminal of that cloned repository type** `pub get --all` to install all the dependencies.
+Clone the project
 
-**Finally Type** `flutter run` to run the project.
+```bash
+  git clone https://github.com/WaniAthar/kle-attendance.git
+```
 
-#### if it didnt work, then create a new flutter project and move the files of this repo to that one.
+Go to the project directory
 
-## Here are some screenshots of the app  
+```bash
+  cd kle-attendance
+```
+Install dependencies
+
+```bash
+  flutter pub get
+```
+
+Start the app 
+
+```bash
+  flutter run
+```
+
+## Demo
 
 <img src="md_files/flutter_01.png" alt="screenshot" height="400"> <img src="md_files/flutter_02.png" alt="screenshot" height="400">
 <img src="md_files/flutter_03.png" alt="screenshot" height="400">
