@@ -1,5 +1,5 @@
 # kle-attendance
-KLE Attendance or Attendd is cross-platform mobile app which will lets the student of KLE Technological University to access his attendence of each course
+KLE Attendance or Attendd is cross-platform mobile app which will lets the student of KLE Technological University to access their attendence of each course
 
 ## Contribution Guidelines
 
