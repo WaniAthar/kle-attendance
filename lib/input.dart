@@ -35,6 +35,7 @@ class _InputDataState extends State<InputData> {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
@@ -374,6 +375,7 @@ Thank you for using Attendd App!
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.orange,
         iconTheme: const IconThemeData(
@@ -428,6 +430,7 @@ Thank you for using Attendd App!
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.orange,
         iconTheme: const IconThemeData(

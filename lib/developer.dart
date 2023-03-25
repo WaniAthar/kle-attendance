@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutDev extends StatelessWidget {
   const AboutDev({super.key});
@@ -11,6 +13,7 @@ class AboutDev extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange,
         elevation: 0,
         title: Text(
           "About Developer",
@@ -86,58 +89,102 @@ class AboutDev extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
-            // const Image(
-            //   image: AssetImage("assets/images/sign.png"),
-            //   height: 150,
-            // ),
-            Text("Found a bug?",
-                style: GoogleFonts.poppins(color: Colors.white)),
+            Text(
+              "Make a contribution",
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
             SizedBox(
-              child: IconButton(
-                  onPressed: () async {
-                    if (await launchUrl(Uri.parse(
-                        "mailto:atharwani001@gmail.com?subject=Bug Report&body=Hi Athar, I found a bug in your app."))) {
-                      // snackbar
-                      true;
-                    } else {
-                      // snackbar
-                      // ignore: use_build_context_synchronously
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Couldn't launch mail app"),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    }
-                  },
-                  tooltip: "Let's kill the bug",
-                  icon: const Icon(
-                    Icons.bug_report_outlined,
-                    color: Colors.white,
-                    size: 30,
-                    grade: 1,
-                  )),
+              height: size.height * 0.01,
             ),
 
-            // Container(
-            //   height: size.height * 0.05,
-            //   padding: const EdgeInsets.all(10),
-            //   margin: const EdgeInsets.only(left: 50, right: 50),
-            //   child: Text(
-            //     "atharwani001@gmail.com",
-            //     style: GoogleFonts.poppins(
-            //       color: Colors.white,
-            //       fontSize: 18,
-            //       fontWeight: FontWeight.w600,
-            //       fontStyle: FontStyle.italic,
-            //     ),
-            //   ),
-            //)
+            Container(
+              width: size.width * 0.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () async {
+                  HapticFeedback.mediumImpact();
+                  // if internet is not available
+                  if (await hasNetwork()) {
+                    await (launchUrl(Uri.parse(
+                        "https://github.com/waniathar/kle-attendance.git")));
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("No Internet Connection"),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
+                },
+                child: const Image(
+                  image: AssetImage("assets/images/github.png"),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.07,
+            ),
+            Text(
+              "Found a bug?",
+              style: GoogleFonts.poppins(color: Colors.white, fontSize: 12),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                // blurred colour
+                color: Colors.red,
+              ),
+              child: IconButton(
+                onPressed: () async {
+                  HapticFeedback.mediumImpact();
+                  if (await launchUrl(Uri.parse(
+                      "mailto:atharwani001@gmail.com?subject=Bug Report&body=Hi Athar, I found a bug in your app."))) {
+                    // snackbar
+                    true;
+                  } else {
+                    // snackbar
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Couldn't launch mail app"),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
+                },
+                tooltip: "Let's kill the bug",
+                icon: const Icon(
+                  Icons.bug_report_outlined,
+                  color: Colors.white,
+                  size: 30,
+                  grade: 1,
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<bool> hasNetwork() async {
+    try {
+      final result = await InternetAddress.lookup('github.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      return false;
+    }
   }
 }

@@ -2,7 +2,7 @@
     package="com.athar.attendance">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="attendance"
+        android:label="Attendd"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

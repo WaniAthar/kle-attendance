@@ -4,7 +4,7 @@ description: An attendance app for KLE technological university students.
 publish_to: 'none'
 
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
@@ -25,6 +25,7 @@ dependencies:
   provider: ^6.0.5
   shimmer: ^2.0.0
   rename: ^2.1.1
+  flutter_windowmanager: ^0.2.0
 
 dev_dependencies:
   flutter_test:

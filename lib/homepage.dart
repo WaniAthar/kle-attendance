@@ -98,6 +98,16 @@ class HomePage extends StatelessWidget {
           child: Lottie.asset(
               "assets/lottieanimations/139432-person-riding-bicycle.json"),
         ),
+        // TextLiquidFill(
+        //   text: '${api.personalData['name']}',
+        //   textStyle: GoogleFonts.poppins(
+        //     color: Colors.white,
+        //     fontSize: 25,
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        //   waveColor: Colors.white,
+        //   boxBackgroundColor: Colors.orange,
+        // ),
         Text('${api.personalData['name']}',
             style: GoogleFonts.poppins(
               color: Colors.white,

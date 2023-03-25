@@ -31,8 +31,14 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Attendance',
+        darkTheme: ThemeData.dark(),
         theme: ThemeData(
-          primarySwatch: Colors.orange,
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: Colors.orange,
+          ),
+
+          // colorSchemeSeed: Colors.orange,
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
@@ -97,11 +103,11 @@ class TileContainer extends StatelessWidget {
       this.colorGradient2 = const Color.fromARGB(255, 115, 247, 120),
       required this.courseCode,
       required this.courseName,
-      required this.professorName,
+      required this.cieMarks,
       required this.attendance})
       : super(key: key);
   Color colorGradient1, colorGradient2;
-  final String courseCode, courseName, professorName, attendance;
+  final String courseCode, courseName, cieMarks, attendance;
   void checkAttendance(String att) {
     int per = int.parse(attendance.replaceAll("%", ""));
     if (per < 65) {
@@ -118,76 +124,93 @@ class TileContainer extends StatelessWidget {
     // calling checkAttendance fucntion to change colour of the container as per attendance
     checkAttendance(attendance);
     return Container(
-      child: Row(
+      child: Column(
         children: [
-          Flexible(
-            child: SizedBox(
-              width: 200,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(top: 10, left: 20),
-                    child: Text(
-                      courseCode, //subject code
-                      style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 2),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            courseName, //subject name
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10, top: 10),
+                  width: 200,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        courseCode, //subject code
+                        style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            letterSpacing: 2),
+                      ),
+                      Flex(
+                        direction: Axis.horizontal,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              courseName, //subject name
+                              style: GoogleFonts.poppins(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 20, bottom: 10),
-                    child: Text(
-                      professorName, //professor name
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        ],
                       ),
-                    ),
+                    ],
+                  ),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          attendance,
+                          textAlign: TextAlign.end,
+                          style: GoogleFonts.poppins(
+                            fontSize: 58,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
+            ],
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.all(20),
-                child: Text(
-                  attendance,
-                  textAlign: TextAlign.end,
+          Container(
+            margin: const EdgeInsets.only(bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'CIE ',
                   style: GoogleFonts.poppins(
-                    fontSize: 58,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  cieMarks,
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-              )
-            ],
-          ),
+              ],
+            ),
+          )
         ],
       ),
       margin: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
@@ -214,12 +237,12 @@ class _SLiderState extends State<SLider> {
   @override
   Widget build(BuildContext context) {
     final api = Provider.of<API>(context);
-    double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
+        backgroundColor: Colors.orange,
         title: Text(
           "Attendd",
           style: GoogleFonts.poppins(
@@ -309,7 +332,7 @@ class _SLiderState extends State<SLider> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10, bottom: 10),
                 height: 10,
                 width: 80,
                 decoration: BoxDecoration(
@@ -325,10 +348,12 @@ class _SLiderState extends State<SLider> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Shimmer.fromColors(
                         child: Container(
+                          margin: const EdgeInsets.only(top: 10, bottom: 10),
+                          width: 170,
                           child: const Text(
                             "Semester 6",
                             style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
@@ -369,7 +394,7 @@ class _SLiderState extends State<SLider> {
                             attendance: "90%",
                             courseCode: "18CSL67dd",
                             courseName: "Machine Learning",
-                            professorName: "Dr. S. S. Patil",
+                            cieMarks: "100/100",
                           ),
                         ),
                       );
@@ -430,7 +455,7 @@ class _SLiderState extends State<SLider> {
                         itemBuilder: (context, index) => TileContainer(
                           courseCode: data[index]['course_code'],
                           courseName: data[index]['course_name'],
-                          professorName: data[index]['course_teacher'],
+                          cieMarks: data[index]['cie_marks'],
                           attendance: data[index]['course_attendance'],
                         ),
                       );
