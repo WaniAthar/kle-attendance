@@ -31,14 +31,8 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Attendance',
-        darkTheme: ThemeData.dark(),
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            secondary: Colors.orange,
-          ),
-
-          // colorSchemeSeed: Colors.orange,
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
@@ -127,70 +121,69 @@ class TileContainer extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            // textBaseline: TextBaseline.alphabetic,
+            // crossAxisAlignment: CrossAxisAlignment.baseline,
             children: [
-              Flexible(
-                child: Container(
-                  margin: const EdgeInsets.only(left: 10, top: 10),
-                  width: 200,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        courseCode, //subject code
-                        style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            letterSpacing: 2),
-                      ),
-                      Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              courseName, //subject name
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
-                              ),
+              Container(
+                margin: const EdgeInsets.only(left: 10, top: 10),
+                width: 200,
+                child: Column(
+                  textBaseline: TextBaseline.alphabetic,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  children: [
+                    Text(
+                      courseCode, //subject code
+                      style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 2),
+                    ),
+                    Flex(
+                      direction: Axis.horizontal,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            courseName, //subject name
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
                             ),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                textBaseline: TextBaseline.alphabetic,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
                 children: [
-                  Flex(
-                    direction: Axis.horizontal,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        child: Text(
-                          attendance,
-                          textAlign: TextAlign.end,
-                          style: GoogleFonts.poppins(
-                            fontSize: 58,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      attendance,
+                      textAlign: TextAlign.end,
+                      style: GoogleFonts.poppins(
+                        fontSize: 58,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),
             ],
           ),
           Container(
-            margin: const EdgeInsets.only(bottom: 10),
+            margin: const EdgeInsets.only(bottom: 10, right: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              textBaseline: TextBaseline.alphabetic,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
               children: [
                 Text(
                   'CIE ',
@@ -309,7 +302,7 @@ class _SLiderState extends State<SLider> {
       body: SlidingUpPanel(
         backdropTapClosesPanel: true,
         body: const HomePage(),
-        minHeight: deviceHeight * 0.55,
+        minHeight: deviceHeight * 0.5,
         maxHeight: deviceHeight * 0.9,
         backdropEnabled: true,
         backdropOpacity: 1,
@@ -332,7 +325,7 @@ class _SLiderState extends State<SLider> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                margin: const EdgeInsets.only(top: 10),
                 height: 10,
                 width: 80,
                 decoration: BoxDecoration(

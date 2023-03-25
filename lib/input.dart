@@ -83,6 +83,7 @@ class _InputDataState extends State<InputData> {
         child: ListView(children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 20,
@@ -129,7 +130,7 @@ class _InputDataState extends State<InputData> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: deviceWidth * 0.27,
+                      width: deviceWidth * 0.25,
                       child: TextField(
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -159,7 +160,7 @@ class _InputDataState extends State<InputData> {
                         },
                       ),
                     ),
-                    SizedBox(width: deviceWidth * 0.01),
+                    const SizedBox(width: 5),
                     SizedBox(
                       width: deviceWidth * 0.23,
                       child: TextField(
@@ -189,9 +190,9 @@ class _InputDataState extends State<InputData> {
                         },
                       ),
                     ),
-                    SizedBox(width: deviceWidth * 0.01),
+                    const SizedBox(width: 5),
                     SizedBox(
-                      width: deviceWidth * 0.27,
+                      width: deviceWidth * 0.25,
                       child: TextField(
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(

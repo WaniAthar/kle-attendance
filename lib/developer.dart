@@ -7,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class AboutDev extends StatelessWidget {
   const AboutDev({super.key});
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,13 +34,16 @@ class AboutDev extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // image
             Container(
               margin: const EdgeInsets.only(top: 20),
-              width: size.width * 0.65,
-              child: const Image(
-                image: AssetImage("assets/images/athar.png"),
+              width: size.width * 0.6,
+              // cache image
+              child: Image(
+                image: const AssetImage("assets/images/athar.png"),
+                height: size.height * 0.3,
               ),
             ),
             const Divider(
@@ -65,8 +67,8 @@ class AboutDev extends StatelessWidget {
               indent: 100,
               endIndent: 100,
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: size.width * 0.05,
             ),
             Container(
               alignment: Alignment.center,
@@ -75,7 +77,7 @@ class AboutDev extends StatelessWidget {
                 "Hi, I'm Athar Mujtaba Wani, a developer who is interested in open source and language semantics.",
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: size.width * 0.03,
                   fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
@@ -85,25 +87,22 @@ class AboutDev extends StatelessWidget {
               "\"I make softwares that work\"",
               style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: size.width * 0.03,
                   fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: size.height * 0.04,
             ),
             Text(
               "Make a contribution",
               style: GoogleFonts.poppins(
                 color: Colors.white,
-                fontSize: 15,
+                fontSize: size.width * 0.03,
               ),
-            ),
-            SizedBox(
-              height: size.height * 0.01,
             ),
 
             Container(
-              width: size.width * 0.2,
+              width: size.width * 0.13,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
               ),
@@ -127,18 +126,19 @@ class AboutDev extends StatelessWidget {
                 },
                 child: const Image(
                   image: AssetImage("assets/images/github.png"),
+                  height: 40,
                 ),
               ),
             ),
             SizedBox(
-              height: size.height * 0.07,
+              height: size.height * 0.1,
             ),
             Text(
               "Found a bug?",
               style: GoogleFonts.poppins(color: Colors.white, fontSize: 12),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: size.height * 0.01,
             ),
             Container(
               decoration: BoxDecoration(
