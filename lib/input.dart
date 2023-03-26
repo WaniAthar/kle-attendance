@@ -34,20 +34,10 @@ class _InputDataState extends State<InputData> {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
+        title: const Text(
           "Login Details",
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-          ),
         ),
         actions: [
           IconButton(

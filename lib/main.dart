@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, use_build_context_synchronously
 import 'package:attendance/api/attendance_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:after_layout/after_layout.dart';
@@ -13,7 +14,12 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // set device orientation to portrait only
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -30,9 +36,25 @@ class _MyAppState extends State<MyApp> {
       create: (context) => API(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Attendance',
+        title: 'Attendd',
         theme: ThemeData(
           useMaterial3: true,
+          appBarTheme: AppBarTheme(
+            iconTheme: const IconThemeData(color: Colors.white),
+            systemOverlayStyle: const SystemUiOverlayStyle(
+                statusBarColor: Colors.transparent,
+                statusBarIconBrightness: Brightness.light),
+            backgroundColor: Colors.orange,
+            scrolledUnderElevation: 0,
+            elevation: 0,
+            centerTitle: true,
+            titleTextStyle: GoogleFonts.poppins(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 25,
+            ),
+          ),
+          primarySwatch: Colors.orange,
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
@@ -115,7 +137,7 @@ class TileContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // calling checkAttendance fucntion to change colour of the container as per attendance
+    Size size = MediaQuery.of(context).size;
     checkAttendance(attendance);
     return Container(
       child: Column(
@@ -162,18 +184,20 @@ class TileContainer extends StatelessWidget {
                 textBaseline: TextBaseline.alphabetic,
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    child: Text(
-                      attendance,
-                      textAlign: TextAlign.end,
-                      style: GoogleFonts.poppins(
-                        fontSize: 58,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                  Flex(direction: Axis.horizontal, children: [
+                    Container(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Text(
+                        attendance,
+                        textAlign: TextAlign.end,
+                        style: GoogleFonts.poppins(
+                          fontSize: size.width * 0.12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
+                  ]),
                 ],
               ),
             ],
@@ -233,16 +257,8 @@ class _SLiderState extends State<SLider> {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.orange,
-        title: Text(
+        title: const Text(
           "Attendd",
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-          ),
         ),
         leading: IconButton(
           hoverColor: Colors.white,

@@ -13,39 +13,51 @@ class HomePage extends StatelessWidget {
     final api = Provider.of<API>(context, listen: false);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        color: Colors.orange,
-        child: FutureBuilder(
-          // dont call the api.getData() here, it will call the api everytime the build method is called
-          // instead call it in the init state of the provider
-          // future: api.getPersonalData(),
-          future: api.getData(),
-          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return _buildShimmerEffect(size);
-            } else if (snapshot.hasError) {
-              api.fetchErr = true;
-              return Column(
-                children: [
-                  SizedBox(
-                    height: size.height * 0.2,
-                    width: double.infinity,
-                    child: Lottie.asset(
-                        "assets/lottieanimations/91950-loop-loading-animation.json"),
-                  ),
-                  Text("Internet error :(",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      )),
-                ],
-              );
-            } else {
-              return _buildData(api, size);
-            }
-          },
-        ),
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.orange,
+            child: FutureBuilder(
+              // dont call the api.getData() here, it will call the api everytime the build method is called
+              // instead call it in the init state of the provider
+              // future: api.getPersonalData(),
+              future: api.getData(),
+              builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return _buildShimmerEffect(size);
+                } else if (snapshot.hasError) {
+                  api.fetchErr = true;
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.2,
+                        width: double.infinity,
+                        child: Lottie.asset(
+                            "assets/lottieanimations/91950-loop-loading-animation.json"),
+                      ),
+                      Text("Internet error :(",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          )),
+                    ],
+                  );
+                } else {
+                  return _buildData(api, size);
+                }
+              },
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.01,
+            right: size.width * 0.03,
+            child: Text(
+              "v1.1.2+5",
+              style: GoogleFonts.ubuntu(color: Colors.white, fontSize: 12),
+            ),
+          )
+        ],
       ),
     );
   }

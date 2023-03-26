@@ -12,12 +12,8 @@ class AboutDev extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        elevation: 0,
-        title: Text(
+        title: const Text(
           "About Developer",
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           tooltip: "Back",
@@ -102,6 +98,7 @@ class AboutDev extends StatelessWidget {
             ),
 
             Container(
+              margin: const EdgeInsets.only(top: 10),
               width: size.width * 0.13,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
