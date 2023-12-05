@@ -18,7 +18,7 @@ class API extends ChangeNotifier {
 
   void getSharedPref() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    usn = pref.getString('usn');
+    usn = pref.getString('usn')?.replaceAll(' ', '');
     yyyy = pref.getString('yyyy');
     mm = pref.getString('mm');
     dd = pref.getString('dd');
